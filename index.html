@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="bn" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>শামীম আহসান | IT Professional</title>
+<meta name="description" content="Shamim Ahsan - IT Professional, Communication Technician, Web & Graphics Designer">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Hind+Siliguri:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C96B;
+    --gold-dim: #8A6E2F;
+    --dark: #0A0A0F;
+    --dark2: #111118;
+    --dark3: #1A1A24;
+    --dark4: #22222E;
+    --text: #E8E6DF;
+    --text-dim: #9B9890;
+    --accent: #4C7FC9;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'Hind Siliguri', sans-serif;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* Anti-copy */
+  body { -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+  img { pointer-events: none; -webkit-user-drag: none; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--dark); }
+  ::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 2px; }
+
+  /* Noise texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+
+  /* Typography */
+  .font-display { font-family: 'Playfair Display', serif; }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+  .font-body { font-family: 'Hind Siliguri', sans-serif; }
+
+  /* Gold gradient text */
+  .gold-text {
+    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-dim) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Navigation */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    background: rgba(10,10,15,0.85);
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    transition: all 0.3s ease;
+  }
+
+  nav.scrolled {
+    background: rgba(10,10,15,0.97);
+    border-bottom-color: rgba(201,168,76,0.2);
+  }
+
+  .nav-link {
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.3s;
+    padding: 0.25rem 0;
+    position: relative;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 0;
+    width: 0; height: 1px;
+    background: var(--gold);
+    transition: width 0.3s ease;
+  }
+
+  .nav-link:hover { color: var(--gold-light); }
+  .nav-link:hover::after { width: 100%; }
+
+  /* Lang toggle */
+  .lang-btn {
+    background: transparent;
+    border: 1px solid var(--gold-dim);
+    color: var(--gold);
+    padding: 0.3rem 0.8rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .lang-btn:hover {
+    background: var(--gold);
+    color: var(--dark);
+  }
+
+  /* Hero */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 6rem 0 4rem;
+  }
+
+  .hero-grid-bg {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+  }
+
+  .hero-line {
+    width: 80px; height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    color: var(--text-dim);
+    letter-spacing: 0.05em;
+    border-left: 2px solid var(--gold-dim);
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .hero-bio {
+    font-size: 1.05rem;
+    color: var(--text-dim);
+    max-width: 520px;
+    line-height: 1.9;
+  }
+
+  .badge {
+    display: inline-block;
+    background: rgba(201,168,76,0.08);
+    border: 1px solid rgba(201,168,76,0.2);
+    color: var(--gold);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.8rem;
+    margin: 0.2rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* CTA buttons */
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--gold);
+    color: var(--dark);
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.85rem 2rem;
+    text-decoration: none;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.15);
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+  }
+  .btn-primary:hover::after { transform: translateX(0); }
+
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    border: 1px solid rgba(201,168,76,0.4);
+    color: var(--gold);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.85rem 2rem;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  .btn-secondary:hover {
+    background: rgba(201,168,76,0.08);
+    border-color: var(--gold);
+  }
+
+  /* Section */
+  section { padding: 6rem 0; }
+
+  .section-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.75rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 30px; height: 1px;
+    background: var(--gold);
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .divider {
+    width: 60px; height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    margin: 1.5rem 0 3rem;
+  }
+
+  /* Skill cards */
+  .skill-card {
+    background: var(--dark3);
+    border: 1px solid rgba(201,168,76,0.08);
+    padding: 1.75rem;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .skill-card:hover { border-color: rgba(201,168,76,0.25); transform: translateY(-4px); }
+  .skill-card:hover::before { transform: scaleX(1); }
+
+  .skill-icon {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .skill-name {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    background: rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.12);
+    padding: 0.2rem 0.6rem;
+    margin: 0.2rem;
+    display: inline-block;
+    letter-spacing: 0.05em;
+  }
+
+  /* Timeline */
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--gold-dim), transparent);
+  }
+
+  .timeline-item {
+    position: relative;
+    padding-bottom: 3rem;
+  }
+  .timeline-item:last-child { padding-bottom: 0; }
+
+  .timeline-dot {
+    position: absolute;
+    left: -2.4rem;
+    top: 0.3rem;
+    width: 12px; height: 12px;
+    background: var(--gold);
+    border: 2px solid var(--dark);
+    box-shadow: 0 0 10px rgba(201,168,76,0.4);
+    transition: all 0.3s;
+  }
+
+  .timeline-item:hover .timeline-dot {
+    background: var(--gold-light);
+    box-shadow: 0 0 20px rgba(201,168,76,0.7);
+  }
+
+  .timeline-year {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--gold);
+    letter-spacing: 0.15em;
+    margin-bottom: 0.4rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+
+  .timeline-card {
+    background: var(--dark3);
+    border: 1px solid rgba(201,168,76,0.08);
+    padding: 1.5rem;
+    transition: all 0.3s;
+  }
+  .timeline-card:hover { border-color: rgba(201,168,76,0.2); }
+
+  .timeline-role {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+  }
+
+  .timeline-org {
+    font-size: 0.9rem;
+    color: var(--gold-dim);
+    margin-bottom: 0.75rem;
+  }
+
+  .timeline-desc {
+    font-size: 0.9rem;
+    color: var(--text-dim);
+    line-height: 1.8;
+  }
+
+  /* Contact */
+  .contact-card {
+    background: var(--dark3);
+    border: 1px solid rgba(201,168,76,0.1);
+    padding: 1.5rem 2rem;
+    display: flex; align-items: center; gap: 1.25rem;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  .contact-card:hover {
+    border-color: rgba(201,168,76,0.35);
+    background: var(--dark4);
+    transform: translateY(-3px);
+  }
+
+  .contact-icon {
+    width: 48px; height: 48px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+    transition: all 0.3s;
+  }
+  .contact-card:hover .contact-icon {
+    background: rgba(201,168,76,0.2);
+  }
+
+  .contact-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--gold-dim);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.2rem;
+  }
+
+  .contact-value {
+    font-size: 0.95rem;
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* Footer */
+  footer {
+    background: var(--dark2);
+    border-top: 1px solid rgba(201,168,76,0.1);
+    padding: 2.5rem 0;
+    text-align: center;
+  }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+
+  .animate-fade-up {
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards;
+  }
+  .delay-1 { animation-delay: 0.1s; }
+  .delay-2 { animation-delay: 0.25s; }
+  .delay-3 { animation-delay: 0.4s; }
+  .delay-4 { animation-delay: 0.55s; }
+  .delay-5 { animation-delay: 0.7s; }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Mobile menu */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10,10,15,0.98);
+    z-index: 999;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu .nav-link {
+    font-size: 1.3rem;
+    letter-spacing: 0.2em;
+  }
+
+  /* Current badge */
+  .current-badge {
+    background: rgba(76,127,201,0.15);
+    border: 1px solid rgba(76,127,201,0.3);
+    color: #7EB3FF;
+    font-size: 0.65rem;
+    font-family: 'JetBrains Mono', monospace;
+    letter-spacing: 0.12em;
+    padding: 0.15rem 0.6rem;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 0.5rem;
+  }
+
+  /* Notable person tag */
+  .notable {
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    margin-top: 0.5rem;
+    font-style: italic;
+  }
+  .notable::before { content: '— '; color: var(--gold-dim); }
+
+  /* Stat numbers */
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  /* Hamburger */
+  .hamburger { cursor: pointer; display: flex; flex-direction: column; gap: 5px; }
+  .hamburger span {
+    display: block; width: 24px; height: 2px;
+    background: var(--text);
+    transition: all 0.3s;
+  }
+  .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+</style>
+</head>
+<body>
+
+<!-- ============ HIDDEN PRIVATE DATA (Personal Memories - Not Public) ============
+
+জন্ম: ০৫ অক্টোবর ১৯৯৪, বুধবার
+স্থান: পুরির পটল গ্রাম, তবকপুর ইউনিয়ন, উলিপুর, কুড়িগ্রাম
+
+প্রথম শিক্ষা: ৪-৫ বছর বয়সে ক্বারিপাড়া গ্রামে মক্তবে (মসজিদ ভিত্তিক শিশু শিক্ষা কার্যক্রম)।
+
+মাদ্রাসার স্মৃতি:
+- বামনের হাট তেজারতিয়া মাদ্রাসায় প্রথম ৪ বছর।
+- সাথে যেতেন: আবু রায়হান, রাশেদুল, মাইদুল।
+- শিক্ষক: মাওলানা জোবায়ের, হাফেজ ফয়জার।
+- ২ বছর নানার বাড়িতে থেকে আবাসিক পড়ালেখা।
+
+উলিপুর মসজিদুল হুদা মাদ্রাসা (২০০৫):
+- শিক্ষক: হাফেজ হোসাইন, হাফেজ তোফাজ্জল।
+- বন্ধু: হাফেজ সামিউল।
+
+উমানন্দ মাদ্রাসা:
+- শিক্ষক: চাদ মিয়া, মাওলানা আব্দুর রহিম, রুমি।
+- বন্ধু: লিমন, মাসুদ, জুই।
+
+জুম্মাহাট মাদ্রাসা (২০০৯):
+- ২০১০ সালে ট্যালেন্টপুল বৃত্তি।
+- প্রাইভেট শিক্ষক: আনিসুর স্যার।
+- দাখিল বন্ধু: ইউসুফ, তারেক, নুননবি, নাদিম।
+
+পলিটেকনিক স্মৃতি:
+- শিক্ষক: রমজান আলী, হেলাল উদ্দিন।
+- বন্ধু: রাসেল।
+
+============ END OF PRIVATE DATA ============ -->
+
+<div id="private-memories" style="display:none;" aria-hidden="true">
+  <!-- Private Data: Birth 05 Oct 1994, Wednesday. Village: Purir Potol Gram, Tabokpur Union, Ulipur, Kurigram. -->
+</div>
+
+<!-- ====== NAVIGATION ====== -->
+<nav id="navbar">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <a href="#hero" class="font-display text-lg font-bold gold-text tracking-tight">SA</a>
+
+    <!-- Desktop Nav -->
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#about" class="nav-link" data-bn="পরিচিতি" data-en="About">পরিচিতি</a>
+      <a href="#skills" class="nav-link" data-bn="দক্ষতা" data-en="Skills">দক্ষতা</a>
+      <a href="#experience" class="nav-link" data-bn="কর্মজীবন" data-en="Experience">কর্মজীবন</a>
+      <a href="#education" class="nav-link" data-bn="শিক্ষা" data-en="Education">শিক্ষা</a>
+      <a href="#contact" class="nav-link" data-bn="যোগাযোগ" data-en="Contact">যোগাযোগ</a>
+    </div>
+
+    <div class="flex items-center gap-4">
+      <button class="lang-btn" id="langToggle" onclick="toggleLang()">EN</button>
+      <div class="hamburger md:hidden" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" class="nav-link" onclick="toggleMenu()" data-bn="পরিচিতি" data-en="About">পরিচিতি</a>
+  <a href="#skills" class="nav-link" onclick="toggleMenu()" data-bn="দক্ষতা" data-en="Skills">দক্ষতা</a>
+  <a href="#experience" class="nav-link" onclick="toggleMenu()" data-bn="কর্মজীবন" data-en="Experience">কর্মজীবন</a>
+  <a href="#education" class="nav-link" onclick="toggleMenu()" data-bn="শিক্ষা" data-en="Education">শিক্ষা</a>
+  <a href="#contact" class="nav-link" onclick="toggleMenu()" data-bn="যোগাযোগ" data-en="Contact">যোগাযোগ</a>
+  <button class="lang-btn" onclick="toggleLang(); toggleMenu();" id="langToggleMobile">EN</button>
+</div>
+
+<!-- ====== HERO ====== -->
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+
+  <div class="max-w-6xl mx-auto px-6 w-full">
+    <div class="max-w-3xl">
+      <div class="hero-line animate-fade-up delay-1"></div>
+
+      <div class="animate-fade-up delay-1 mb-3 flex flex-wrap gap-2">
+        <span class="badge" data-bn="আইটি প্রফেশনাল" data-en="IT Professional">আইটি প্রফেশনাল</span>
+        <span class="badge" data-bn="BGB টেকনিশিয়ান" data-en="BGB Technician">BGB টেকনিশিয়ান</span>
+        <span class="badge" data-bn="ওয়েব ডেভেলপার" data-en="Web Developer">ওয়েব ডেভেলপার</span>
+      </div>
+
+      <h1 class="hero-title animate-fade-up delay-2">
+        <span class="text-white" data-bn="শামীম" data-en="Shamim">শামীম</span><br>
+        <span class="gold-text" data-bn="আহসান" data-en="Ahsan">আহসান</span>
+      </h1>
+
+      <p class="hero-subtitle animate-fade-up delay-3" data-bn="কমিউনিকেশন টেকনিশিয়ান (BGB) | ওয়েব ও গ্রাফিক্স ডিজাইনার | বিএসসি ইন সিএসই" data-en="Communication Technician (BGB) | Web & Graphics Designer | B.Sc. in CSE">
+        কমিউনিকেশন টেকনিশিয়ান (BGB) | ওয়েব ও গ্রাফিক্স ডিজাইনার | বিএসসি ইন সিএসই
+      </p>
+
+      <p class="hero-bio animate-fade-up delay-4" data-bn="নতুন টেকনোলজি শিখতে এবং তা অন্যদের শেখাতে আমি ভালোবাসি। প্রোগ্রামিং, সফটওয়্যার ডিজাইন ও ডেভেলপমেন্ট আমার প্রধান আগ্রহের জায়গা।" data-en="I love learning new technologies and sharing that knowledge with others. Programming, software design, and development are my primary areas of interest.">
+        নতুন টেকনোলজি শিখতে এবং তা অন্যদের শেখাতে আমি ভালোবাসি। প্রোগ্রামিং, সফটওয়্যার ডিজাইন ও ডেভেলপমেন্ট আমার প্রধান আগ্রহের জায়গা।
+      </p>
+
+      <div class="flex flex-wrap gap-4 mt-8 animate-fade-up delay-5">
+        <a href="#contact" class="btn-primary" data-bn="যোগাযোগ করুন →" data-en="Get in Touch →">যোগাযোগ করুন →</a>
+        <a href="#experience" class="btn-secondary" data-bn="কর্মজীবন দেখুন" data-en="View Experience">কর্মজীবন দেখুন</a>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-3 gap-4 md:gap-8 mt-16 max-w-lg animate-fade-up delay-5">
+      <div>
+        <div class="stat-num gold-text">৮+</div>
+        <div class="text-xs text-gray-500 uppercase tracking-widest mt-1 font-mono" data-bn="বছরের অভিজ্ঞতা" data-en="Years Experience">বছরের অভিজ্ঞতা</div>
+      </div>
+      <div>
+        <div class="stat-num gold-text">১০+</div>
+        <div class="text-xs text-gray-500 uppercase tracking-widest mt-1 font-mono" data-bn="প্রতিষ্ঠানে কাজ" data-en="Organizations">প্রতিষ্ঠানে কাজ</div>
+      </div>
+      <div>
+        <div class="stat-num gold-text">৫+</div>
+        <div class="text-xs text-gray-500 uppercase tracking-widest mt-1 font-mono" data-bn="প্রযুক্তি" data-en="Tech Domains">প্রযুক্তি</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== ABOUT ====== -->
+<section id="about" style="background: var(--dark2); border-top: 1px solid rgba(201,168,76,0.07);">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 gap-16 items-center">
+      <div class="reveal">
+        <div class="section-label" data-bn="পরিচিতি" data-en="About Me">পরিচিতি</div>
+        <h2 class="section-title" data-bn="একজন প্যাশনেট<br>আইটি প্রফেশনাল" data-en="A Passionate<br>IT Professional">
+          একজন প্যাশনেট<br><span class="gold-text">আইটি প্রফেশনাল</span>
+        </h2>
+        <div class="divider"></div>
+        <p class="text-gray-400 leading-relaxed mb-4" data-bn="শামীম আহসান একজন অভিজ্ঞ আইটি প্রফেশনাল যিনি বর্তমানে বর্ডার গার্ড বাংলাদেশ (BGB)-তে কমিউনিকেশন টেকনিশিয়ান হিসেবে কর্মরত। তাঁর ক্যারিয়ার শুরু হয়েছিল ঠাকুরগাঁও থেকে এবং বর্তমানে তিনি ঢাকায় কর্মজীবন পরিচালনা করছেন।" data-en="Shamim Ahsan is an experienced IT Professional currently serving as a Communication Technician at Border Guard Bangladesh (BGB). His career began in Thakurgaon and he is now based in Dhaka.">
+          শামীম আহসান একজন অভিজ্ঞ আইটি প্রফেশনাল যিনি বর্তমানে বর্ডার গার্ড বাংলাদেশ (BGB)-তে কমিউনিকেশন টেকনিশিয়ান হিসেবে কর্মরত। তাঁর ক্যারিয়ার শুরু হয়েছিল ঠাকুরগাঁও থেকে এবং বর্তমানে তিনি ঢাকায় কর্মজীবন পরিচালনা করছেন।
+        </p>
+        <p class="text-gray-400 leading-relaxed" data-bn="তিনি ইউরোপিয়ান ইউনিভার্সিটি অব বাংলাদেশ থেকে বিএসসি ইন সিএসই ডিগ্রি অর্জন করেছেন এবং ঠাকুরগাঁও পলিটেকনিক থেকে ডিপ্লোমা ইন কম্পিউটার টেকনোলজি সম্পন্ন করেছেন।" data-en="He holds a B.Sc. in CSE from European University of Bangladesh and completed a Diploma in Computer Technology from Thakurgaon Polytechnic Institute.">
+          তিনি ইউরোপিয়ান ইউনিভার্সিটি অব বাংলাদেশ থেকে বিএসসি ইন সিএসই ডিগ্রি অর্জন করেছেন এবং ঠাকুরগাঁও পলিটেকনিক থেকে ডিপ্লোমা ইন কম্পিউটার টেকনোলজি সম্পন্ন করেছেন।
+        </p>
+      </div>
+
+      <div class="reveal grid grid-cols-2 gap-4">
+        <div style="background: var(--dark3); border: 1px solid rgba(201,168,76,0.1); padding: 1.5rem;">
+          <div class="text-3xl mb-2">💻</div>
+          <div class="font-semibold mb-1" data-bn="ওয়েব ডেভেলপমেন্ট" data-en="Web Development">ওয়েব ডেভেলপমেন্ট</div>
+          <div class="text-sm text-gray-500" data-bn="HTML, CSS, JS, PHP" data-en="HTML, CSS, JS, PHP">HTML, CSS, JS, PHP</div>
+        </div>
+        <div style="background: var(--dark3); border: 1px solid rgba(201,168,76,0.1); padding: 1.5rem;">
+          <div class="text-3xl mb-2">🎨</div>
+          <div class="font-semibold mb-1" data-bn="গ্রাফিক্স ডিজাইন" data-en="Graphics Design">গ্রাফিক্স ডিজাইন</div>
+          <div class="text-sm text-gray-500" data-bn="Photoshop, Illustrator" data-en="Photoshop, Illustrator">Photoshop, Illustrator</div>
+        </div>
+        <div style="background: var(--dark3); border: 1px solid rgba(201,168,76,0.1); padding: 1.5rem;">
+          <div class="text-3xl mb-2">📡</div>
+          <div class="font-semibold mb-1" data-bn="নেটওয়ার্কিং" data-en="Networking">নেটওয়ার্কিং</div>
+          <div class="text-sm text-gray-500" data-bn="বেসিক নেটওয়ার্ক সেটআপ" data-en="Basic Network Setup">বেসিক নেটওয়ার্ক সেটআপ</div>
+        </div>
+        <div style="background: var(--dark3); border: 1px solid rgba(201,168,76,0.1); padding: 1.5rem;">
+          <div class="text-3xl mb-2">🤖</div>
+          <div class="font-semibold mb-1" data-bn="AI টুলস" data-en="AI Tools">AI টুলস</div>
+          <div class="text-sm text-gray-500" data-bn="আধুনিক AI টুলস ব্যবহার" data-en="Modern AI Tools Usage">আধুনিক AI টুলস ব্যবহার</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== SKILLS ====== -->
+<section id="skills">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center reveal mb-4">
+      <div class="section-label justify-center" data-bn="দক্ষতা" data-en="Technical Skills">দক্ষতা</div>
+      <h2 class="section-title" data-bn="প্রযুক্তিগত দক্ষতা" data-en="Technical Expertise">প্রযুক্তিগত <span class="gold-text">দক্ষতা</span></h2>
+    </div>
+    <div class="divider mx-auto reveal"></div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+
+      <div class="skill-card reveal">
+        <span class="skill-icon">🌐</span>
+        <h3 class="text-base font-semibold mb-3" data-bn="ওয়েব ডেভেলপমেন্ট" data-en="Web Development">ওয়েব ডেভেলপমেন্ট</h3>
+        <div>
+          <span class="skill-name">HTML</span>
+          <span class="skill-name">CSS</span>
+          <span class="skill-name">JavaScript</span>
+          <span class="skill-name">PHP</span>
+          <span class="skill-name">MySQL</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal">
+        <span class="skill-icon">🎨</span>
+        <h3 class="text-base font-semibold mb-3" data-bn="গ্রাফিক্স ডিজাইন" data-en="Graphics Design">গ্রাফিক্স ডিজাইন</h3>
+        <div>
+          <span class="skill-name">Adobe Photoshop</span>
+          <span class="skill-name">Illustrator</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal">
+        <span class="skill-icon">📊</span>
+        <h3 class="text-base font-semibold mb-3" data-bn="মাইক্রোসফট অফিস" data-en="MS Office Suite">মাইক্রোসফট অফিস</h3>
+        <div>
+          <span class="skill-name">MS Word</span>
+          <span class="skill-name">Excel</span>
+          <span class="skill-name">PowerPoint</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal">
+        <span class="skill-icon">🔧</span>
+        <h3 class="text-base font-semibold mb-3" data-bn="আইটি সাপোর্ট" data-en="IT Support">আইটি সাপোর্ট</h3>
+        <div>
+          <span class="skill-name" data-bn="হার্ডওয়্যার" data-en="Hardware">হার্ডওয়্যার</span>
+          <span class="skill-name" data-bn="সফটওয়্যার" data-en="Software">সফটওয়্যার</span>
+          <span class="skill-name" data-bn="ট্রাবলশুটিং" data-en="Troubleshooting">ট্রাবলশুটিং</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal">
+        <span class="skill-icon">📡</span>
+        <h3 class="text-base font-semibold mb-3" data-bn="নেটওয়ার্কিং" data-en="Networking">নেটওয়ার্কিং</h3>
+        <div>
+          <span class="skill-name" data-bn="বেসিক নেটওয়ার্ক" data-en="Basic Network">বেসিক নেটওয়ার্ক</span>
+          <span class="skill-name" data-bn="কমিউনিকেশন সিস্টেম" data-en="Communication Sys.">কমিউনিকেশন সিস্টেম</span>
+        </div>
+      </div>
+
+      <div class="skill-card reveal">
+        <span class="skill-icon">🤖</span>
+        <h3 class="text-base font-semibold mb-3" data-bn="অন্যান্য" data-en="Others">অন্যান্য</h3>
+        <div>
+          <span class="skill-name" data-bn="AI টুলস" data-en="AI Tools">AI টুলস</span>
+          <span class="skill-name" data-bn="ডেটা এন্ট্রি" data-en="Data Entry">ডেটা এন্ট্রি</span>
+          <span class="skill-name" data-bn="ট্রেনিং" data-en="Training">ট্রেনিং</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ====== EXPERIENCE ====== -->
+<section id="experience" style="background: var(--dark2); border-top: 1px solid rgba(201,168,76,0.07);">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="reveal mb-4">
+      <div class="section-label" data-bn="কর্মজীবন" data-en="Work Experience">কর্মজীবন</div>
+      <h2 class="section-title">
+        <span data-bn="পেশাদার" data-en="Professional">পেশাদার</span> <span class="gold-text" data-bn="অভিজ্ঞতা" data-en="Experience">অভিজ্ঞতা</span>
+      </h2>
+    </div>
+    <div class="divider reveal"></div>
+
+    <div class="timeline">
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">
+          ২০২৩ — <span class="current-badge" data-bn="বর্তমান" data-en="PRESENT">বর্তমান</span>
+        </div>
+        <div class="timeline-card">
+          <div class="timeline-role" data-bn="কমিউনিকেশন টেকনিশিয়ান" data-en="Communication Technician">কমিউনিকেশন টেকনিশিয়ান</div>
+          <div class="timeline-org" data-bn="বর্ডার গার্ড বাংলাদেশ (BGB)" data-en="Border Guard Bangladesh (BGB)">বর্ডার গার্ড বাংলাদেশ (BGB)</div>
+          <div class="timeline-desc" data-bn="বর্ডার গার্ড বাংলাদেশের হয়ে কমিউনিকেশন সিস্টেম পরিচালনা ও রক্ষণাবেক্ষণের দায়িত্বে কর্মরত।" data-en="Currently responsible for operating and maintaining communication systems for Border Guard Bangladesh.">
+            বর্ডার গার্ড বাংলাদেশের হয়ে কমিউনিকেশন সিস্টেম পরিচালনা ও রক্ষণাবেক্ষণের দায়িত্বে কর্মরত।
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">২০২২</div>
+        <div class="timeline-card">
+          <div class="timeline-role" data-bn="আইটি এক্সিকিউটিভ" data-en="IT Executive">আইটি এক্সিকিউটিভ</div>
+          <div class="timeline-org" data-bn="বেটার লাইফ হসপিটাল লিমিটেড, ঢাকা" data-en="Better Life Hospital Ltd., Dhaka">বেটার লাইফ হসপিটাল লিমিটেড, ঢাকা</div>
+          <div class="timeline-desc" data-bn="হাসপাতালের আইটি অবকাঠামো ব্যবস্থাপনা ও তদারকির দায়িত্ব পালন।" data-en="Responsible for managing and overseeing the hospital's IT infrastructure.">
+            হাসপাতালের আইটি অবকাঠামো ব্যবস্থাপনা ও তদারকির দায়িত্ব পালন।
+          </div>
+          <!-- Notable: মোঃ শামসুদ্দোহা রাতুল -->
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">২০২১ — ২০২২</div>
+        <div class="timeline-card">
+          <div class="timeline-role" data-bn="আইটি সেকশন" data-en="IT Section">আইটি সেকশন</div>
+          <div class="timeline-org" data-bn="আলোকিত শিশুকণ্ঠ পরিষদ" data-en="Alokito Shishukantho Parishad">আলোকিত শিশুকণ্ঠ পরিষদ</div>
+          <div class="timeline-desc" data-bn="প্রতিষ্ঠানের আইটি বিভাগে দায়িত্বশীল ভূমিকায় কর্মরত ছিলেন।" data-en="Served in a responsible role in the organization's IT department.">
+            প্রতিষ্ঠানের আইটি বিভাগে দায়িত্বশীল ভূমিকায় কর্মরত ছিলেন।
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">২০১৯ — ২০২১</div>
+        <div class="timeline-card">
+          <div class="timeline-role" data-bn="আইটি অফিসার (প্রমোশন)" data-en="IT Officer (Promoted)">আইটি অফিসার <span style="color: var(--gold-dim); font-size: 0.85rem;">(প্রোডাকশন থেকে প্রমোশন)</span></div>
+          <div class="timeline-org" data-bn="গার্মেন্টস ফ্যাক্টরি, গাজীপুর" data-en="Garments Factory, Gazipur">গার্মেন্টস ফ্যাক্টরি, গাজীপুর</div>
+          <div class="timeline-desc" data-bn="প্রোডাকশন থেকে আইটি অফিসার পদে পদোন্নতি পেয়ে কারখানার আইটি পরিচালনার দায়িত্ব নেন।" data-en="Promoted from production to IT Officer, taking responsibility for the factory's IT operations.">
+            প্রোডাকশন থেকে আইটি অফিসার পদে পদোন্নতি পেয়ে কারখানার আইটি পরিচালনার দায়িত্ব নেন।
+          </div>
+          <!-- Notable: মোঃ সাইয়েদ রুহুল কুদ্দুস তরুণ -->
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">২০১৮ — ২০১৯</div>
+        <div class="timeline-card">
+          <div class="timeline-role" data-bn="গ্রাফিক্স ও আইটি অ্যাসোসিয়েট" data-en="Graphics & IT Associate">গ্রাফিক্স ও আইটি অ্যাসোসিয়েট</div>
+          <div class="timeline-org" data-bn="কম্পিউটার ফার্ম (মিরপুর ও বাড্ডা) | ইন্টেলিজেন্স ইমেজ ম্যানেজমেন্ট লিমিটেড, ঢাকা" data-en="Computer Farm (Mirpur & Badda) | Intelligence Image Management Ltd., Dhaka">কম্পিউটার ফার্ম (মিরপুর ও বাড্ডা) | ইন্টেলিজেন্স ইমেজ ম্যানেজমেন্ট লিমিটেড, ঢাকা</div>
+          <div class="timeline-desc" data-bn="ঢাকায় বিভিন্ন আইটি ও গ্রাফিক্স সম্পর্কিত কাজে অভিজ্ঞতা অর্জন।" data-en="Gained experience in various IT and graphics-related work in Dhaka.">
+            ঢাকায় বিভিন্ন আইটি ও গ্রাফিক্স সম্পর্কিত কাজে অভিজ্ঞতা অর্জন।
+          </div>
+          <!-- Notable: সাঈদ -->
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">২০১৭</div>
+        <div class="timeline-card">
+          <div class="timeline-role" data-bn="গ্রাফিক্স ডিজাইনার ও প্রশিক্ষক" data-en="Graphics Designer & Instructor">গ্রাফিক্স ডিজাইনার ও প্রশিক্ষক</div>
+          <div class="timeline-org" data-bn="ফাইবার মার্কেটপ্লেস | ইকো ইনস্টিটিউট অফ টেকনোলজি, ঠাকুরগাঁও" data-en="Fiverr Marketplace | Eco Institute of Technology, Thakurgaon">ফাইবার মার্কেটপ্লেস | ইকো ইনস্টিটিউট অফ টেকনোলজি, ঠাকুরগাঁও</div>
+          <div class="timeline-desc" data-bn="ফ্রিল্যান্স গ্রাফিক্স ডিজাইন এবং পাশাপাশি ইনস্টিটিউটে প্রশিক্ষক হিসেবে কাজ।" data-en="Freelance graphics design work alongside teaching as an instructor at the institute.">
+            ফ্রিল্যান্স গ্রাফিক্স ডিজাইন এবং পাশাপাশি ইনস্টিটিউটে প্রশিক্ষক হিসেবে কাজ।
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year" data-bn="পূর্ববর্তী" data-en="Earlier">পূর্ববর্তী</div>
+        <div class="timeline-card">
+          <div class="timeline-role" data-bn="ডেটা এন্ট্রি ও বেসিক ট্রেনার" data-en="Data Entry & Basic Trainer">ডেটা এন্ট্রি ও বেসিক ট্রেনার</div>
+          <div class="timeline-org" data-bn="ডিস্ট্রিক্ট একাউন্টস অফিস, ঠাকুরগাঁও | বিসিই কম্পিউটার" data-en="District Accounts Office, Thakurgaon | BCE Computer">ডিস্ট্রিক্ট একাউন্টস অফিস, ঠাকুরগাঁও | বিসিই কম্পিউটার</div>
+          <div class="timeline-desc" data-bn="সরকারি দপ্তরে ডেটা এন্ট্রি এবং কম্পিউটার প্রশিক্ষণ প্রতিষ্ঠানে বেসিক কম্পিউটার প্রশিক্ষক হিসেবে দায়িত্ব পালন।" data-en="Data entry at a government office and basic computer training at a computer institute.">
+            সরকারি দপ্তরে ডেটা এন্ট্রি এবং কম্পিউটার প্রশিক্ষণ প্রতিষ্ঠানে বেসিক কম্পিউটার প্রশিক্ষক হিসেবে দায়িত্ব পালন।
+          </div>
+          <!-- Notable: মোঃ মিজানুর রহমান (District Accounts Office) -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ====== EDUCATION ====== -->
+<section id="education">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="reveal mb-4">
+      <div class="section-label" data-bn="শিক্ষাজীবন" data-en="Education & Training">শিক্ষাজীবন</div>
+      <h2 class="section-title">
+        <span data-bn="শিক্ষা ও" data-en="Education &">শিক্ষা ও</span> <span class="gold-text" data-bn="প্রশিক্ষণ" data-en="Training">প্রশিক্ষণ</span>
+      </h2>
+    </div>
+    <div class="divider reveal"></div>
+
+    <div class="timeline">
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">২০১৮ — ২০২২</div>
+        <div class="timeline-card">
+          <div class="timeline-role" data-bn="বিএসসি ইন কম্পিউটার সায়েন্স ও ইঞ্জিনিয়ারিং" data-en="B.Sc. in Computer Science & Engineering">বিএসসি ইন কম্পিউটার সায়েন্স ও ইঞ্জিনিয়ারিং</div>
+          <div class="timeline-org" data-bn="ইউরোপিয়ান ইউনিভার্সিটি অব বাংলাদেশ, ঢাকা" data-en="European University of Bangladesh, Dhaka">ইউরোপিয়ান ইউনিভার্সিটি অব বাংলাদেশ, ঢাকা</div>
+          <div class="timeline-desc" data-bn="কম্পিউটার সায়েন্স ও ইঞ্জিনিয়ারিং বিষয়ে স্নাতক ডিগ্রি সম্পন্ন।" data-en="Completed Bachelor's degree in Computer Science and Engineering.">
+            কম্পিউটার সায়েন্স ও ইঞ্জিনিয়ারিং বিষয়ে স্নাতক ডিগ্রি সম্পন্ন।
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">২০১৩ — ২০১৭</div>
+        <div class="timeline-card">
+          <div class="timeline-role" data-bn="ডিপ্লোমা ইন কম্পিউটার টেকনোলজি" data-en="Diploma in Computer Technology">ডিপ্লোমা ইন কম্পিউটার টেকনোলজি</div>
+          <div class="timeline-org" data-bn="ঠাকুরগাঁও পলিটেকনিক ইনস্টিটিউট" data-en="Thakurgaon Polytechnic Institute">ঠাকুরগাঁও পলিটেকনিক ইনস্টিটিউট</div>
+          <div class="timeline-desc" data-bn="চার বছরের ডিপ্লোমা কোর্স সম্পন্ন। পাশাপাশি মিনাল কম্পিউটার ট্রেনিং একাডেমী থেকে ইলেকট্রিক্যাল হাউজ ওয়্যারিং কোর্স করেন।" data-en="Completed the four-year diploma course. Also completed an Electrical House Wiring course from Minal Computer Training Academy.">
+            চার বছরের ডিপ্লোমা কোর্স সম্পন্ন। পাশাপাশি মিনাল কম্পিউটার ট্রেনিং একাডেমী থেকে ইলেকট্রিক্যাল হাউজ ওয়্যারিং কোর্স করেন।
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">২০১৩</div>
+        <div class="timeline-card">
+          <div class="timeline-role" data-bn="দাখিল (বিজ্ঞান বিভাগ)" data-en="Dakhil (Science)">দাখিল (বিজ্ঞান বিভাগ)</div>
+          <div class="timeline-org" data-bn="উমানন্দ আদর্শ দাখিল মাদ্রাসা ও জুম্মাহাট দারুল উলুম ডিগ্রী ফাজিল মাদ্রাসা" data-en="Umananda Adarsha Dakhil Madrasa & Jummahat Darul Ulum Degree Fazil Madrasa">উমানন্দ আদর্শ দাখিল মাদ্রাসা ও জুম্মাহাট দারুল উলুম ডিগ্রী ফাজিল মাদ্রাসা</div>
+          <div class="timeline-desc" data-bn="বিজ্ঞান বিভাগ থেকে দাখিল পরীক্ষায় উত্তীর্ণ।" data-en="Passed the Dakhil examination from the Science department.">
+            বিজ্ঞান বিভাগ থেকে দাখিল পরীক্ষায় উত্তীর্ণ।
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-year">২০০৭</div>
+        <div class="timeline-card">
+          <div class="timeline-role" data-bn="কোরআনের হেফজ ও পাগড়ী গ্রহণ" data-en="Hifz of the Quran & Graduation">কোরআনের হেফজ ও পাগড়ী গ্রহণ</div>
+          <div class="timeline-org" data-bn="তবকপুর বামনের হাট তেজারতিয়া নুরানী হাফেজীয়া মাদ্রাসা" data-en="Tabokpur Bamner Hat Tejaratia Nurani Hafezia Madrasa">তবকপুর বামনের হাট তেজারতিয়া নুরানী হাফেজীয়া মাদ্রাসা</div>
+          <div class="timeline-desc" data-bn="পবিত্র কোরআনের হেফজ সম্পন্ন করে পাগড়ী গ্রহণ — একটি গুরুত্বপূর্ণ ধর্মীয় মাইলফলক।" data-en="Completed the memorization (Hifz) of the Holy Quran and received the turban — a significant religious milestone.">
+            পবিত্র কোরআনের হেফজ সম্পন্ন করে পাগড়ী গ্রহণ — একটি গুরুত্বপূর্ণ ধর্মীয় মাইলফলক।
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ====== CONTACT ====== -->
+<section id="contact" style="background: var(--dark2); border-top: 1px solid rgba(201,168,76,0.07);">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center reveal mb-4">
+      <div class="section-label justify-center" data-bn="যোগাযোগ" data-en="Contact">যোগাযোগ</div>
+      <h2 class="section-title" data-bn="যোগাযোগ করুন" data-en="Get In Touch">
+        <span data-bn="যোগাযোগ" data-en="Get In">যোগাযোগ</span> <span class="gold-text" data-bn="করুন" data-en="Touch">করুন</span>
+      </h2>
+      <p class="text-gray-400 mt-4 max-w-lg mx-auto" data-bn="যেকোনো পেশাদার সুযোগ বা প্রকল্পের জন্য নিচের মাধ্যমে যোগাযোগ করতে পারেন।" data-en="Feel free to reach out for any professional opportunity or project collaboration.">
+        যেকোনো পেশাদার সুযোগ বা প্রকল্পের জন্য নিচের মাধ্যমে যোগাযোগ করতে পারেন।
+      </p>
+    </div>
+    <div class="divider mx-auto reveal"></div>
+
+    <div class="grid md:grid-cols-3 gap-4 max-w-3xl mx-auto">
+
+      <a href="tel:+8801734136520" class="contact-card reveal">
+        <div class="contact-icon">📞</div>
+        <div>
+          <div class="contact-label" data-bn="মোবাইল / WhatsApp" data-en="Mobile / WhatsApp">মোবাইল / WhatsApp</div>
+          <div class="contact-value">01734 136520</div>
+        </div>
+      </a>
+
+      <a href="mailto:igl.shamim@gmail.com" class="contact-card reveal">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <div class="contact-label" data-bn="ইমেইল" data-en="Email">ইমেইল</div>
+          <div class="contact-value">igl.shamim@gmail.com</div>
+        </div>
+      </a>
+
+      <a href="https://facebook.com/shamim.wd" target="_blank" rel="noopener noreferrer" class="contact-card reveal">
+        <div class="contact-icon">📘</div>
+        <div>
+          <div class="contact-label" data-bn="ফেসবুক" data-en="Facebook">ফেসবুক</div>
+          <div class="contact-value">facebook.com/shamim.wd</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ====== FOOTER ====== -->
+<footer>
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="font-display text-2xl gold-text font-bold mb-3">শামীম আহসান</div>
+    <p class="text-gray-600 text-sm font-mono" data-bn="© ২০২৫ শামীম আহসান। সর্বস্বত্ব সংরক্ষিত।" data-en="© 2025 Shamim Ahsan. All rights reserved.">
+      © ২০২৫ শামীম আহসান। সর্বস্বত্ব সংরক্ষিত।
+    </p>
+    <p class="text-gray-700 text-xs mt-2 font-mono">igl.shamim@gmail.com</p>
+  </div>
+</footer>
+
+<script>
+// ========== DATA STORE ==========
+const portfolioData = {
+  name: { bn: 'শামীম আহসান', en: 'Shamim Ahsan' },
+  contact: {
+    mobile: '01734136520',
+    email: 'igl.shamim@gmail.com',
+    facebook: 'facebook.com/shamim.wd'
+  },
+  skills: {
+    web: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'],
+    design: ['Adobe Photoshop', 'Illustrator'],
+    office: ['MS Word', 'Excel', 'PowerPoint'],
+    itSupport: ['Hardware', 'Software', 'Troubleshooting', 'Basic Networking'],
+    other: ['AI Tools', 'Data Entry', 'Training']
+  }
+};
+
+// ========== LANGUAGE TOGGLE ==========
+let currentLang = 'bn';
+
+function toggleLang() {
+  currentLang = currentLang === 'bn' ? 'en' : 'bn';
+  document.getElementById('langToggle').textContent = currentLang === 'bn' ? 'EN' : 'বাং';
+  const mob = document.getElementById('langToggleMobile');
+  if (mob) mob.textContent = currentLang === 'bn' ? 'EN' : 'বাং';
+
+  document.querySelectorAll('[data-bn]').forEach(el => {
+    const val = el.getAttribute('data-' + currentLang);
+    if (val) {
+      // Handle innerHTML for elements with <br>
+      if (val.includes('<br>') || val.includes('<span')) {
+        el.innerHTML = val;
+      } else {
+        el.textContent = val;
+      }
+    }
+  });
+}
+
+// ========== NAVBAR SCROLL ==========
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('navbar');
+  if (window.scrollY > 50) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+
+// ========== MOBILE MENU ==========
+function toggleMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const ham = document.getElementById('hamburger');
+  menu.classList.toggle('open');
+  ham.classList.toggle('active');
+}
+
+// ========== SCROLL REVEAL ==========
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, 100);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ========== ANTI-COPY PROTECTION ==========
+// Disable right-click
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+// Disable keyboard shortcuts
+document.addEventListener('keydown', e => {
+  if (
+    (e.ctrlKey || e.metaKey) &&
+    ['c', 'u', 's', 'a', 'p', 'i', 'j'].includes(e.key.toLowerCase())
+  ) {
+    e.preventDefault();
+    return false;
+  }
+  if (e.key === 'F12') {
+    e.preventDefault();
+    return false;
+  }
+});
+
+// Disable text selection via JS
+document.addEventListener('selectstart', e => e.preventDefault());
+document.addEventListener('dragstart', e => e.preventDefault());
+
+// DevTools detection (basic)
+(function() {
+  let devtoolsOpen = false;
+  setInterval(() => {
+    const threshold = 160;
+    if (window.outerWidth - window.innerWidth > threshold || window.outerHeight - window.innerHeight > threshold) {
+      if (!devtoolsOpen) { devtoolsOpen = true; }
+    } else { devtoolsOpen = false; }
+  }, 1000);
+})();
+</script>
+</body>
+</html>
